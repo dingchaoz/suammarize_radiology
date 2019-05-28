@@ -16,7 +16,7 @@ from utils.vocab import Vocab
 from model.trainer import Trainer
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--model_dir', help='Directory of the model file.')
+parser.add_argument('model_dir', help='Directory of the model file.')
 parser.add_argument('--data_dir', default='', help='Directory to look for data. By default use the path in loaded args.')
 parser.add_argument('--model', default='best_model.pt', help='Name of the model file.')
 parser.add_argument('--dataset', default='test', help="Data split to use for evaluation: dev or test.")
@@ -42,11 +42,8 @@ elif args.cuda:
 model_file = args.model_dir + '/' + args.model
 print("Loading model from {}".format(model_file))
 trainer = Trainer(model_file=model_file)
-#device = torch.device("cuda:1")
-#trainer.model.to(device)
-#trainer.crit.to(device)
 opt, vocab = trainer.opt, trainer.vocab
-#print("current device is {}".format(torch.cuda.current_device()))
+
 # load data
 data_dir = args.data_dir if len(args.data_dir) > 0 else opt['data_dir']
 data_file = data_dir + '/{}.jsonl'.format(args.dataset)

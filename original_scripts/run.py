@@ -18,7 +18,7 @@ from model.trainer import Trainer
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_file', help='Filename of the trained model .pt file.')
+    parser.add_argument('model_file', help='Filename of the trained model .pt file.')
     args = parser.parse_args()
     return args
 
